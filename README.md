@@ -5,7 +5,7 @@
 <p align="justify">Program reads the grammar definition expressed in BNF (<a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus-Naur Form</a>) at runtime after which it parses inputed strings.</p>
 
 ## Course project details
-<p align="justify">The task was to create a text parser that would parse the contents of the input file, as specified by the grammar in the <i>modified</i> Backus-Naur form. The grammar is given in a configuration file.<br><br>
+<p align="justify">The task was to create a text parser that would parse the contents of the input file, as specified by the grammar in the <i>modified</i> Backus-Naur form. The grammar is given in a configuration file.<br>
 
 The modified BNF form is written based on the rules for the standard BNF form, with the following appendices: </p>
 
@@ -19,6 +19,5 @@ mail_address | Properly formatted e-mail address
 web_link | Properly formatted absolute [URL](https://en.wikipedia.org/wiki/URL)
 number_constant | Integer or floating-point constant
 big_city | Any of the big European cities (first 200)
-<br>
 
 ### Implementation specifications
