@@ -1,5 +1,5 @@
 # BNF parser
-<p align="justify"><i>Formal Methods in Software Engineering</i> course project, as taught at the Faculty of Electrical Engineering Banja Luka. I did this project two years ago, but I never got around to opensourcing it.</p>
+<p align="justify"><i>Formal Methods in Software Engineering</i> course project, as taught at the Faculty of Electrical Engineering Banja Luka. I did this project a year and a half ago, but I never got around to opensourcing it.</p>
 
 ## Description
 <p align="justify">Program reads the grammar definition expressed in BNF (<a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus-Naur Form</a>) at runtime after which it parses inputed strings.</p>
