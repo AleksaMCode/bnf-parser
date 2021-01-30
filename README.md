@@ -12,7 +12,7 @@ The modified BNF form is written based on the rules for the standard BNF form, w
 - `<a> ::= regex(regular_expression)` <p align="justify"> Denotes a node that is determined on the basis of a regular expression specified in parentheses. In a given case, `<a>` represents any expression that matches the given regular</p>
 - `<a> ::= standard_expression` <p align="justify"> Denotes a node that is determined based on tables of standard regular expressions, where in place of standard_expression can be any of the items from the following tables.</p>
 
-Standard_expression | Meaning 
+standard_expression | Meaning 
 ---|---
 phone_number | Phone number with or without international and country call codes, with different delimiters
 mail_address | Properly formatted e-mail address
