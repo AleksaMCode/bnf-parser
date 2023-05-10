@@ -1,0 +1,9 @@
+# ---------------------------------------------
+# This is my comment;
+# ---------------------------------------------
+<exp> ::= <add> | <sub> | <mul> | <div> | <num>
+<add> ::= <num> + <num> | <num> + ( <exp> ) | ( <exp> ) + <num>  | ( <exp> ) + ( <exp> )
+<sub> ::= <num> - <num> | <num> - ( <exp> ) | ( <exp> ) - <num>  | ( <exp> ) - ( <exp> )
+<mul> ::= <num> × <num> | <num> × ( <exp> ) | ( <exp> ) × <num>  | ( <exp> ) × ( <exp> )
+<div> ::= <num> ÷ <num> | <num> ÷ ( <exp> ) | ( <exp> ) ÷ <num>  | ( <exp> ) ÷ ( <exp> )
+<num> ::= regex(^[0-9]+)

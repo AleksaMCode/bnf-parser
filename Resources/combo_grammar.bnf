@@ -1,0 +1,6 @@
+<extraBNF> ::= <phone> | <email> | <link> | <num> | <city>
+<phone> ::= phone_number
+<email> ::= email_address
+<link> ::= web_link
+<num> ::= number_constant
+<city> ::= big_city
