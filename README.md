@@ -18,10 +18,9 @@ number_constant | Integer or floating-point constant
 big_city | Any of the big European cities (first 200)
 
 ### Implementation specifications
-- <p align="justify">The configuration file (config.bnf), must contain in a modified BNF form a specification of the parsing method.</p>
-- <p align="justify">As command line argument program should accept input and output files, where the output file can only be <b>XML</b> file.</p>
-- <p align="justify"><b>XML</b> tags of the output file must be named based on the token name in the BNF form, so that the resulting parsing tree is clear and equivalent to the specified BNF form</p>
-- <p align="justify">In case the BNF grammar  is incorrect, throw an exception describing where the error occurred (i.e. the line from the BNF grammar on which the error occurred).
+- <p align="justify">The grammar (configuration) file, must contain, in a modified BNF form, a specification of the parsing method.</p>
+- <p align="justify"><b>XML</b> tags of an output file must be named based on the token name in the BNF form, so that the resulting parsing tree is clear and equivalent to the specified BNF form.</p>
+- <p align="justify">In case the BNF grammar is incorrect, throw an exception describing where the error occurred (i.e. the line from the BNF grammar on which the error occurred).
 - <p align="justify">In case a string from an input file cannot be parsed according to the BNF form, skip that input line.</p>
 
 ## References
