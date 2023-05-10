@@ -2,7 +2,7 @@
 <p align="justify">Parser reads a grammar definition expressed in BNF (<a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus-Naur Form</a>) at runtime after which it parses inputed strings.</p>
 
 ## Description
-<p align="justify">The project idea was to create a text parser that would parse the contents of the input file, as specified by the grammar in the <i>modified</i> Backus-Naur form. The grammar is given in a <code>.bnf</code> file with a file.<br>
+<p align="justify">The project idea was to create a text parser that would parse the contents of the input file, as specified by the grammar in the <i>modified</i> Backus-Naur form. The grammar is given in a <code>.bnf</code> file.<br>
 
 The modified BNF form is written based on the rules for the standard BNF form, with the following appendices:</p>
 
