@@ -6,8 +6,8 @@
 
 The modified BNF form is written based on the rules for the standard BNF form, with the following appendices:</p>
 
-- `<a> ::= regex(regular_expression)` <p align="justify"> Denotes a node that is determined on the basis of a regular expression specified in parentheses. In a given case, `<a>` represents any expression that matches the given regular.</p>
-- `<a> ::= standard_expression` <p align="justify"> Denotes a node that is determined based on tables of standard regular expressions, where in place of <code>standard_expression</code> can be any of the items from the following table.</p>
+- `<a> ::= regex(regular_expression)` <p align="justify">Denotes a node that is determined on the basis of a regular expression specified in parentheses. In a given case, `<a>` represents any expression that matches the given regex.</p>
+- `<a> ::= standard_expression` <p align="justify">Denotes a node that is determined based on tables of standard regular expressions, where in place of <code>standard_expression</code> can be any of the items from the following table.</p>
 
 standard_expression | Meaning 
 ---|---
