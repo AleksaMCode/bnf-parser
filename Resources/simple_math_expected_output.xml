@@ -1,0 +1,1 @@
+﻿<?xml version="1.0" encoding="utf-8"?><parsetree><exp><add><num><Token>3</Token></num><Token>+</Token><num><Token>4</Token></num></add></exp><exp><add><num><Token>10</Token></num><Token>+</Token><Token>(</Token><exp><mul><num><Token>2</Token></num><Token>×</Token><num><Token>5</Token></num></mul></exp><Token>)</Token></add></exp></parsetree>
