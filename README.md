@@ -29,6 +29,7 @@ big_city | Any of the big ~~European~~ cities (first 200)
 <li><p align="justify">Peter Sestoft, Ken Friis Larsen - <i>Grammars and parsing with C# 2.0</i></p></li>
 <li><p align="justify">Anil Maheshwari, Michiel Smid - <i>Introduction to Theory of Computation</i></p></li>
 <li><p align="justify">Dick Grune, Ceriel J. H. Jacobs - <i>Parsing Techniques: A Practical Guide (Monographs in Computer Science)</i></p></li>
+</ul>
 
 ## To-Do List
 - [ ] Implement download of city names from a web API instead of using hard-coded city names in code.
