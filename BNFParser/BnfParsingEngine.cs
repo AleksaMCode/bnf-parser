@@ -8,7 +8,7 @@ namespace BNFParser
     public class BnfParsingEngine
     {
         private string _grammarPath;
-        private string GrammarPath
+        public string GrammarPath
         {
             get
             {
@@ -21,15 +21,16 @@ namespace BNFParser
                 InputLoad();
             }
         }
-        private string InputPath { get; set; }
-        private string OutputPath { get; set; }
+        public string InputPath { get; set; }
+        public string OutputPath { get; set; }
+
         private List<string> inputLines = new List<string>();
+
         public BnfParsingEngine(string grammarPath, string inputPath, string outputPath)
         {
-            GrammarPath = grammarPath;
             InputPath = inputPath;
             OutputPath = outputPath;
-            InputLoad();
+            GrammarPath = grammarPath;
         }
 
         public BnfParsingEngine() { }
@@ -49,31 +50,23 @@ namespace BNFParser
 
         public void Parse()
         {
-            try
+            List<ParseNode> parseForest = new List<ParseNode>();
+
+            using (StreamReader file = new StreamReader(GrammarPath))
             {
-                List<ParseNode> parseForest = new List<ParseNode>();
+                int lineNum = 0;
+                BnfParser parser = new BnfParser(file);
 
-                using (StreamReader file = new StreamReader(GrammarPath))
-                {
-                    int lineNum = 0;
-                    BnfParser parser = new BnfParser(file);
-
-                    inputLines.ForEach(
-                        str =>
-                        {
-                            ParseNode parseTree = parser.Parse(str, lineNum);
-                            if (parseTree != null)
-                                parseForest.Add(parseTree);
-                        }
-                        );
-                }
-                WriteOutput(parseForest);
+                inputLines.ForEach(
+                    str =>
+                    {
+                        ParseNode parseTree = parser.Parse(str, lineNum);
+                        if (parseTree != null)
+                            parseForest.Add(parseTree);
+                    }
+                    );
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
+            WriteOutput(parseForest);
         }
 
         private void XmlWrite(XmlWriter writer, ParseNode node)
