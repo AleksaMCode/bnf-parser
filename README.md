@@ -6,8 +6,8 @@
 
 The modified BNF form is written based on the rules for the standard BNF form, with the following appendices:</p>
 
-- `<a> ::= regex(regular_expression)` <p align="justify"> Denotes a node that is determined on the basis of a regular expression specified in parentheses. In a given case, `<a>` represents any expression that matches the given regular</p>
-- `<a> ::= standard_expression` <p align="justify"> Denotes a node that is determined based on tables of standard regular expressions, where in place of standard_expression can be any of the items from the following tables.</p>
+- `<a> ::= regex(regular_expression)` <p align="justify"> Denotes a node that is determined on the basis of a regular expression specified in parentheses. In a given case, `<a>` represents any expression that matches the given regular.</p>
+- `<a> ::= standard_expression` <p align="justify"> Denotes a node that is determined based on tables of standard regular expressions, where in place of <code>standard_expression</code> can be any of the items from the following table.</p>
 
 standard_expression | Meaning 
 ---|---
@@ -22,7 +22,7 @@ big_city | Any of the big European cities (first 200)
 - <p align="justify">As command line argument program should accept input and output files, where the output file can only be <b>XML</b> file.</p>
 - <p align="justify"><b>XML</b> tags of the output file must be named based on the token name in the BNF form, so that the resulting parsing tree is clear and equivalent to the specified BNF form</p>
 - <p align="justify">In case the BNF grammar  is incorrect, throw an exception describing where the error occurred (i.e. the line from the BNF grammar on which the error occurred).
-- <p align="justify">In case the input file cannot be parsed according to the BNF form, skip the input line.</p>
+- <p align="justify">In case a string from an input file cannot be parsed according to the BNF form, skip that input line.</p>
 
 ## References
 <ul>
