@@ -33,4 +33,4 @@ big_city | Any of the big ~~European~~ cities (first 200)
 
 ## To-Do List
 - [ ] Implement download of city names from a web API instead of using hard-coded city names in code.
-- [ ] Create a BNF parser GUI.
+- [ ] Create a GUI for BNF parser.
