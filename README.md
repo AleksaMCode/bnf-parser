@@ -1,11 +1,8 @@
 # BNF parser
-<p align="justify"><i>Formal Methods in Software Engineering</i> course project, as taught at the Faculty of Electrical Engineering Banja Luka. I did this project a year and a half ago, but I never got around to opensourcing it.</p>
+<p align="justify">Parser reads a grammar definition expressed in BNF (<a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus-Naur Form</a>) at runtime after which it parses inputed strings.</p>
 
 ## Description
-<p align="justify">Program reads the grammar definition expressed in BNF (<a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus-Naur Form</a>) at runtime after which it parses inputed strings.</p>
-
-## Course project details
-<p align="justify">The task was to create a text parser that would parse the contents of the input file, as specified by the grammar in the <i>modified</i> Backus-Naur form. The grammar is given in a configuration file.<br>
+<p align="justify">The project idea was to create a text parser that would parse the contents of the input file, as specified by the grammar in the <i>modified</i> Backus-Naur form. The grammar is given in a <code>.bnf</code> file with a file.<br>
 
 The modified BNF form is written based on the rules for the standard BNF form, with the following appendices:</p>
 
@@ -24,7 +21,8 @@ big_city | Any of the big European cities (first 200)
 - <p align="justify">The configuration file (config.bnf), must contain in a modified BNF form a specification of the parsing method.</p>
 - <p align="justify">As command line argument program should accept input and output files, where the output file can only be <b>XML</b> file.</p>
 - <p align="justify"><b>XML</b> tags of the output file must be named based on the token name in the BNF form, so that the resulting parsing tree is clear and equivalent to the specified BNF form</p>
-- <p align="justify">In case the input file cannot be parsed according to the BNF form, print a message on the standard output stream about where the error occurred (i.e. the line from the BNF specification on which the error occurred).</p>
+- <p align="justify">In case the BNF grammar  is incorrect, throw an exception describing where the error occurred (i.e. the line from the BNF grammar on which the error occurred).
+- <p align="justify">In case the input file cannot be parsed according to the BNF form, skip the input line.</p>
 
 ## References
 <ul>
