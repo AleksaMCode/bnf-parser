@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BigCityTerminalToken.cs" />
     <Compile Include="BnfParser.cs" />
+    <Compile Include="BnfParsingEngine.cs" />
     <Compile Include="BnfRule.cs" />
     <Compile Include="NonTerminalToken.cs" />
     <Compile Include="ParseNode.cs" />
