@@ -15,7 +15,7 @@ phone_number | Phone number with or without international and country call codes
 mail_address | Properly formatted e-mail address
 web_link | Properly formatted absolute [URL](https://en.wikipedia.org/wiki/URL)
 number_constant | Integer or floating-point constant
-big_city | Any of the big European cities (first 200)
+big_city | Any of the big ~~European~~ cities (first 200)
 
 ### Implementation specifications
 - <p align="justify">The grammar (configuration) file, must contain, in a modified BNF form, a specification of the parsing method.</p>
@@ -29,3 +29,7 @@ big_city | Any of the big European cities (first 200)
 <li><p align="justify">Peter Sestoft, Ken Friis Larsen - <i>Grammars and parsing with C# 2.0</i></p></li>
 <li><p align="justify">Anil Maheshwari, Michiel Smid - <i>Introduction to Theory of Computation</i></p></li>
 <li><p align="justify">Dick Grune, Ceriel J. H. Jacobs - <i>Parsing Techniques: A Practical Guide (Monographs in Computer Science)</i></p></li>
+
+## To-Do List
+- [ ] Implement download of city names from a web API instead of using hard-coded city names in code.
+- [ ] Create a BNF parser GUI.
