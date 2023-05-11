@@ -1,3 +1,5 @@
+<img width="150" align="right" src="./Resources/bnf_parser_logo.png" alt_text="[https://www.flaticon.com/free-icons/parsing](https://www.flaticon.com/free-icons/parsing)"></img>
+
 # BNF parser
 <p align="justify">Parser reads a grammar definition expressed in BNF (<a href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus-Naur Form</a>) at runtime after which it parses inputed strings.</p>
 
@@ -15,13 +17,19 @@ phone_number | Phone number with or without international and country call codes
 mail_address | Properly formatted e-mail address
 web_link | Properly formatted absolute [URL](https://en.wikipedia.org/wiki/URL)
 number_constant | Integer or floating-point constant
-big_city | Any of the big ~~European~~ cities (first 200)
+big_city | Any city from a parsers list
 
 ### Implementation specifications
 - <p align="justify">The grammar (configuration) file, must contain, in a modified BNF form, a specification of the parsing method.</p>
 - <p align="justify"><b>XML</b> tags of an output file must be named based on the token name in the BNF form, so that the resulting parsing tree is clear and equivalent to the specified BNF form.</p>
 - <p align="justify">In case the BNF grammar is incorrect, throw an exception describing where the error occurred (i.e. the line from the BNF grammar on which the error occurred).
 - <p align="justify">In case a string from an input file cannot be parsed according to the BNF form, skip that input line.</p>
+
+## Dependencies
+<p align="justify">Projects that BNF parser uses and/or is dependent on:</p>
+
+- [ServiceStack.Text](https://github.com/ServiceStack/ServiceStack)
+- [CountriesNow API](https://github.com/MartinsOnuoha/countriesNowAPI)
 
 ## References
 <ul>
@@ -32,5 +40,5 @@ big_city | Any of the big ~~European~~ cities (first 200)
 </ul>
 
 ## To-Do List
-- [ ] Implement download of city names from a web API instead of using hard-coded city names in code.
+- [x] Implement download of city names from a web API instead of using hard-coded city names in code.
 - [ ] Create a GUI for BNF parser.
