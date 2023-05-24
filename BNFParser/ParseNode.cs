@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BNFParser
 {
@@ -25,7 +21,9 @@ namespace BNFParser
                 return token;
             }
             set
-                => token = value;
+            {
+                token = value;
+            }
         }
 
         public string Value
@@ -35,17 +33,23 @@ namespace BNFParser
                 return this.value;
             }
             set
-                => this.value = value;
+            {
+                this.value = value;
+            }
         }
 
         /// <summary>
         /// Creating empty parse node.
         /// </summary>
         public ParseNode()
-            => children = new List<ParseNode>();
+        {
+            children = new List<ParseNode>();
+        }
 
         public ParseNode(string token) : this()
-            => this.token = token;
+        {
+            this.token = token;
+        }
 
         public List<ParseNode> GetChildren()
         {
@@ -59,7 +63,9 @@ namespace BNFParser
         }
 
         public void AddChild(ParseNode child)
-            => children.Add(child);
+        {
+            children.Add(child);
+        }
 
         /// <summary>
         /// Size of parsing tree.
@@ -69,7 +75,9 @@ namespace BNFParser
         {
             int size = 1;
             foreach (ParseNode node in children)
+            {
                 size += node.GetSize();
+            }
             return size;
         }
     }
