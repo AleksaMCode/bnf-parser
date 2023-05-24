@@ -15,7 +15,7 @@ namespace BNFParser
             data = data.Select(x => x.Where(y => key.Equals(y.Key) && !string.IsNullOrWhiteSpace(y.Value)).ToDictionary(y => y.Key, y => y.Value)).ToList();
         }
 
-        public string[] getCities(int count)
+        public string[] GetCities(int count)
         {
             Trim();
             var cities = new List<string>();
@@ -42,7 +42,7 @@ namespace BNFParser
 
         public BigCityTerminalToken(string name) : base(name)
         {
-            cities = Cities.CityNamesAPIurl.GetJsonFromUrl().FromJson<Cities>().getCities(200);
+            cities = Cities.CityNamesAPIurl.GetJsonFromUrl().FromJson<Cities>().GetCities(200);
         }
 
         public bool IsItAMatch(string cityName)
