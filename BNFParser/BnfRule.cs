@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace BNFParser
@@ -17,7 +14,7 @@ namespace BNFParser
         /// <summary>
         /// List of all possible cases of the rule
         /// </summary>
-        private List<TokenList> possibilities;
+        private List<TokenList> possibilities = new List<TokenList>();
         private static string[] rgxPattern =
             { @"^[[+]387]{0,1}0{0,1}6[1-6]{1}[\/]*\d{3}[-]{0,1}\d{3}$"/*@"^[[+]+387]*6[1-6]+[\/]+\d{3}[-]+\d{3}$"*/,
             @"^\w+([-+.']\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$",
@@ -32,12 +29,14 @@ namespace BNFParser
                 return leftHandSide;
             }
             set
-                => leftHandSide = value;
-
+            {
+                leftHandSide = value;
+            }
         }
 
         public BnfRule()
-            => possibilities = new List<TokenList>();
+        {
+        }
 
         public static BnfRule ParseRule(string input)
         {
@@ -45,7 +44,9 @@ namespace BNFParser
             string[] leftRightSplit = Regex.Split(input, @"\s*::=\s*"); // \s* matches any whitespace character (0 or more) - \s*::=\s*
 
             if (leftRightSplit.Length != 2)
+            {
                 throw new Exception("Cannot find left-hand and right-hand side of BNF rule!\n");
+            }
 
             string lhs = leftRightSplit[0].Trim();
             rule.LeftHandSide = new NonTerminalToken(lhs);
@@ -95,10 +96,14 @@ namespace BNFParser
                     altLast = new string[0];
 
                 if (parts.Length > 1)
+                {
                     altLast = Regex.Split(parts[1], @"\s+\|\s+");
+                }
 
-                if ((altNotLast.Length == 0 && altLast.Length == 0)/* || parts.Length == 0*/)
+                if (altNotLast.Length == 0 && altLast.Length == 0/* || parts.Length == 0*/)
+                {
                     throw new Exception("Right-hand side of BNF rule is empty!\n");
+                }
 
                 ProcessPossibilities(rule, altNotLast, false);
                 ProcessPossibilities(rule, altLast, true);
@@ -114,13 +119,17 @@ namespace BNFParser
                 addMe.ToLastOrNotToLast = isIt;
                 string[] splits = poss.Split(' ');
                 if (splits.Length == 0)
+                {
                     throw new Exception("Possibilties of BNF rule are empty!");
+                }
 
                 foreach (string split in splits)
                 {
                     string splitTrim = split.Trim();
                     if (splitTrim.Contains("<") && !splitTrim.StartsWith("<"))
+                    {
                         throw new Exception("The expression '" + splitTrim + "' contains tokens that are not separated by space/s.!\n"); // |<div> | <sub>
+                    }
                     if (splitTrim.StartsWith("<")) // Adding non-terminal token
                     {
                         Token addMeToken = new NonTerminalToken(splitTrim);
@@ -129,7 +138,9 @@ namespace BNFParser
                     else
                     {
                         if (string.IsNullOrEmpty(splitTrim))
+                        {
                             throw new Exception("Creating an empty terminal token is not allowed!\n");
+                        }
 
                         addMe.Add(new TerminalToken(splitTrim)); // literal token - this is a token e.q. 1 | 2 | 3 -> 1 is a literal token
                     }
@@ -139,7 +150,9 @@ namespace BNFParser
         }
 
         public void AddPossibilities(List<TokenList> list)
-            => possibilities.AddRange(list);
+        {
+            possibilities.AddRange(list);
+        }
 
         public List<TokenList> GetPossibilities()
         {
@@ -160,8 +173,9 @@ namespace BNFParser
         {
             List<TerminalToken> list = new List<TerminalToken>();
             foreach (TokenList tokenList in possibilities)
+            {
                 list.AddRange(tokenList.getTerminalTokens());
-
+            }
             return list;
         }
 
