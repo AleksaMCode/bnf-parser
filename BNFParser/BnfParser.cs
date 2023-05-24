@@ -1,30 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace BNFParser
 {
     public class BnfParser
     {
-        private List<BnfRule> rules;
+        private List<BnfRule> rules = new List<BnfRule>();
         private BnfRule startRule;
         /// <summary>
         /// Upper bound that prevents parser from entering an infinite recursion.
         /// </summary>
         private readonly int maxRecursionSteps = 40;
-        //public static string inputCpy;
 
         public BnfParser()
         {
-            startRule = null;
-            rules = new List<BnfRule>();
         }
 
-        public BnfParser(System.IO.StreamReader stream) : this()
-            => SetGrammar(stream);
+        public BnfParser(StreamReader stream) : this()
+        {
+            SetGrammar(stream);
+        }
 
         public void SetGrammar(StreamReader grammar)
         {
@@ -37,7 +33,9 @@ namespace BNFParser
             foreach (BnfRule rule in rules)
             {
                 if (string.Compare(ruleName, rule.LeftHandSide.Name) == 0)
+                {
                     return rule;
+                }
             }
             return null;
         }
@@ -45,11 +43,15 @@ namespace BNFParser
         private BnfRule GetRule(Token token)
         {
             if (token == null)
+            {
                 return null;
+            }
             foreach (BnfRule rule in rules)
             {
                 if (rule.LeftHandSide != null && string.Compare(rule.LeftHandSide.Name, token.Name) == 0)
+                {
                     return rule;
+                }
             }
             return null;
         }
@@ -58,7 +60,8 @@ namespace BNFParser
         {
             string line;
             List<BnfRule> rulesList = new List<BnfRule>();
-            //if (grammar.ReadLine() == null) //problem
+            // TODO: fix the problem with if condition
+            //if (grammar.ReadLine() == null)
             //  throw new Exception("Invalid Grammar Exception - Grammar is empty!");
 
             while ((line = grammar.ReadLine()) != null)
@@ -66,12 +69,16 @@ namespace BNFParser
                 int index;
                 // Skipping comments; comment start with '#'
                 if ((index = line.IndexOf('#')) != -1)
+                {
                     line = line.Substring(0, index);
+                }
 
                 // Remove all leading and trailing white-space characters from the current string object
                 line = line.Trim();
                 if (String.IsNullOrEmpty(line) || line.StartsWith("#"))
+                {
                     continue;
+                }
 
                 try
                 {
@@ -106,7 +113,9 @@ namespace BNFParser
         public void AddRules(List<BnfRule> rules)
         {
             foreach (BnfRule rule in rules)
+            {
                 AddRule(rule);
+            }
         }
 
         //public void SetStartRule(NonTerminalToken token)
@@ -121,7 +130,9 @@ namespace BNFParser
             if (startRule == null)
             {
                 if (rules.Count == 0)
+                {
                     throw new Exception("No start rule found!\n");
+                }
                 // The first rule is the start rule!
                 startRule = rules[0];
             }
@@ -132,12 +143,13 @@ namespace BNFParser
         {
             // When the maximum recursion depth is reached program throws exception.
             if (recursionStep > maxRecursionSteps)
+            {
                 throw new Exception(string.Format("Max. number of recursion steps reached. Error line : {0}", lineNum));
+            }
 
             ParseNode node = null;
             bool wrongToken = true;
-            string inputCpy = "";
-            inputCpy += input;
+            string inputCpy = $"{input}";
             foreach (TokenList poss in rule.GetPossibilities())
             {
                 node = new ParseNode();
@@ -145,8 +157,7 @@ namespace BNFParser
                 TokenList newPossib = poss.getCopy();
                 IEnumerator<Token> possibIterator = newPossib.GetEnumerator();
                 wrongToken = false;
-                inputCpy = "";
-                inputCpy += input;
+                inputCpy = $"{input}";
                 while (possibIterator.MoveNext() && !wrongToken) // checks if it has next token
                 {
                     inputCpy = inputCpy.Trim();
@@ -167,7 +178,9 @@ namespace BNFParser
                             inputCpy = inputCpy.Remove(0, inputSubstring.Length);
 
                             if (possToken is RegexTerminalToken)
+                            {
                                 child = AddRegexToken(child, (RegexTerminalToken)possToken, inputSubstring);
+                            }
 
                             child.Token = inputSubstring;
                             node.AddChild(child);
@@ -192,7 +205,9 @@ namespace BNFParser
                         ParseNode child = null;
                         BnfRule newRule = GetRule(possToken);
                         if (newRule == null)
+                        {
                             throw new Exception("There is rule missing for the non-terminal token '" + possToken.Name + "'!\n");
+                        }
 
                         child = Parse(newRule, ref inputCpy, recursionStep + 1, lineNum);
                         if (child == null) // Parsing failed!
@@ -209,7 +224,9 @@ namespace BNFParser
                     if (!possibIterator.MoveNext())
                     {
                         if (recursionStep > 0 || (recursionStep == 0 && inputCpy.Trim().Length == 0))
+                        {
                             break;
+                        }
                     }
                     else
                     {
@@ -222,11 +239,15 @@ namespace BNFParser
             }
             int consumedLength = input.Length - inputCpy.Length;
             if (wrongToken || consumedLength == 0)
+            {
                 return null;
+            }
 
             input = input.Substring(consumedLength);
             if (recursionStep == 0 && !string.IsNullOrEmpty(input))
+            {
                 return null;
+            }
 
             return node;
         }
@@ -235,7 +256,9 @@ namespace BNFParser
         {
             List<string> matches = token.GetCaptureGroups(str);
             foreach (string match in matches)
+            {
                 node.AddChild(new ParseNode(match));
+            }
 
             return node;
         }
