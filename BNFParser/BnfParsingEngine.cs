@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 
@@ -33,8 +32,9 @@ namespace BNFParser
             GrammarPath = grammarPath;
         }
 
-        public BnfParsingEngine() { }
-
+        public BnfParsingEngine()
+        {
+        }
 
         private void InputLoad()
         {
