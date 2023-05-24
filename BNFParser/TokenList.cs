@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BNFParser
 {
@@ -33,8 +29,12 @@ namespace BNFParser
         {
             List<TerminalToken> retList = new List<TerminalToken>();
             foreach (Token token in this)
+            {
                 if (token is TerminalToken)
+                {
                     retList.Add((TerminalToken)token);
+                }
+            }
 
             return retList;
         }
